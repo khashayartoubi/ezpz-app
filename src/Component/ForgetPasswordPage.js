@@ -65,7 +65,7 @@ export default class ForgetPasswordPage extends Component {
         }
         return (
             <div style={{height:'100%',background:'#E5E5E5'}} className='d-flex align-items-center justify-content-center'>
-                    <form autoComplete="off" onInput={this.SignUpDisabled} onSubmit={this.signUpValidate} style={{height:'95%'}}>
+                    <form autoComplete="off" onInput={this.SignUpDisabled} onSubmit={this.props.formHandler} style={{height:'95%'}}>
                         <div style={{height:'100%',borderRadius:'5px',boxShadow:'1px 2px 10px rgba(0,0,0,0.1)',width:'350px',background:'#fff',padding:'80px 0 60px 0',margin:'50px auto'}} className='d-flex flex-column justify-content-center align-items-center'>
                                 <div style={{width:'380px',height:'100px'}} className='d-flex justify-content-center align-items-center'>
                                     <svg
@@ -103,7 +103,7 @@ export default class ForgetPasswordPage extends Component {
                                             E-mail
                                         </span>
                                     </label>
-                                    <input autoComplete='off' id='signUpEmail' onFocus={this.inputSelectUserName} onBlur={this.InputNotSelectUserName} style={{margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectUserName ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type="text" placeholder={this.state.inputSelectUserName ? '' : 'E-mail'} />
+                                    <input autoComplete='off' id='signUpEmail' onFocus={this.inputSelectUserName} onBlur={this.InputNotSelectUserName} style={{margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectUserName ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type="text" onInput={this.props.inputMail} value={this.props.email} placeholder={this.state.inputSelectUserName ? '' : 'E-mail'} />
 
                                 </div>
                                 

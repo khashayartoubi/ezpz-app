@@ -30,6 +30,7 @@ export default class VerifyOtpPage extends Component {
         $(".inputs").keyup(function () {
             if (this.value.length == 0) {
               $(this).prev('.inputs').select(); 
+              console.log(11);
               
             }
         });

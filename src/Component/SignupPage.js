@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default class SignupPage extends Component {
     constructor(props) {
@@ -9,7 +11,7 @@ export default class SignupPage extends Component {
             inputSelectPas:false,
             inputSelectRepeatPas:false,
             signUpDisabled:false,
-            passwordType: 'password'
+            passwordType: 'password',
         }
     }
    componentDidMount() {
@@ -89,6 +91,7 @@ export default class SignupPage extends Component {
        let password = document.getElementById('signUpPassword').value;
        let Repeatpassword = document.getElementById('signUpRepeatPassword').value;
        let email = document.getElementById('signUpEmail').value;
+
        if(password.length > 0 && email.length > 0 && Repeatpassword.length > 0){
            this.setState(() => ({
                signUpDisabled: true
@@ -97,7 +100,9 @@ export default class SignupPage extends Component {
        }else{
            this.setState({signUpDisabled:false})
        }
+       
    }
+   
    ChangePasswordType = () => {
        
        this.setState({ passwordType: this.state.passwordType == 'text' ? 'password' : 'text' }, () => {                              
@@ -108,9 +113,11 @@ export default class SignupPage extends Component {
    }
 
    render() {
+       
        return (
                 <div style={{height:'100%',background:'#E5E5E5'}} className='d-flex align-items-center justify-content-center'>
-                    <form autoComplete="off" onInput={this.SignUpDisabled} onSubmit={this.signUpValidate} style={{height:'95%'}}>
+                    <Toaster />
+                    <form autoComplete="off" onInput={this.SignUpDisabled} onSubmit={this.props.formHandler} style={{height:'95%'}}>
                         <div style={{height:'100%',borderRadius:'5px',boxShadow:'1px 2px 10px rgba(0,0,0,0.1)',width:'350px',background:'#fff',padding:'80px 0 60px 0',margin:'50px auto'}} className='d-flex flex-column justify-content-center align-items-center'>
                             <div style={{width:'380px',height:'100px'}} className='d-flex justify-content-center align-items-center'>
                                 <svg
@@ -148,7 +155,7 @@ export default class SignupPage extends Component {
                                        E-mail
                                    </span>
                                </label>
-                               <input autoComplete='off' id='signUpEmail' onFocus={this.inputSelectUserName} onBlur={this.InputNotSelectUserName} style={{margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectUserName ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type="text" placeholder={this.state.inputSelectUserName ? '' : 'E-mail'} />
+                               <input autoComplete='off' id='signUpEmail' onFocus={this.inputSelectUserName} onBlur={this.InputNotSelectUserName} style={{margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectUserName ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type="text" onInput={this.props.inputMail} value={this.props.email} placeholder={this.state.inputSelectUserName ? '' : 'E-mail'} />
 
                            </div>
                            
@@ -234,7 +241,7 @@ export default class SignupPage extends Component {
                                        Password
                                    </span>
                                </label>
-                               <input autoComplete='off' id='signUpPassword' onFocus={this.inputSelectPas} onBlur={this.InputNotSelectPas} style={{position:'relative',margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectPas ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type={this.state.passwordType} placeholder={this.state.inputSelectPas ? '' :'Password'} />                    
+                               <input autoComplete='off' id='signUpPassword' onFocus={this.inputSelectPas} onBlur={this.InputNotSelectPas} style={{position:'relative',margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectPas ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type={this.state.passwordType} onInput={this.props.inputPsd} value={this.props.password} placeholder={this.state.inputSelectPas ? '' :'Password'} />                    
                            </div>
                            <div style={{position: 'relative'}}>
                                <label>
@@ -318,7 +325,7 @@ export default class SignupPage extends Component {
                                        Repeat Password
                                    </span>
                                </label>
-                               <input autoComplete='off' id='signUpRepeatPassword' onFocus={this.inputSelectRepeatPas} onBlur={this.InputNotSelectRepeatPas} style={{position:'relative',margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectRepeatPas ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type={this.state.passwordType} placeholder={this.state.inputSelectRepeatPas ? '' :'Repeat Password'} />                    
+                               <input autoComplete='off' id='signUpRepeatPassword' onFocus={this.inputSelectRepeatPas} onBlur={this.InputNotSelectRepeatPas} style={{position:'relative',margin:'10px 0',padding:'10px 10px',border:this.state.inputSelectRepeatPas ? '1px solid #575EFF' : '1px solid #ddd',borderRadius:'5px',borderRadius:'5px',width:'300px',height:'56px',transition:'0.2s'}} type={this.state.passwordType} onInput={this.props.inputRepeatPsd} value={this.props.Repeatpassword} placeholder={this.state.inputSelectRepeatPas ? '' :'Repeat Password'} />                    
                            </div>
                            <button type='submit' disabled={this.state.signUpDisabled ? '' : 'disabled'} style={{fontSize:'24px',background:this.state.signUpDisabled ? '#575EFF' : '#E2E3FF',cursor:this.state.signUpDisabled ? 'pointer' : 'not-allowed',transition:'0.2s',borderRadius:'5px',color:'#fff',border:'none',width:'300px',height:'56px',marginTop:'30px'}} className='d-flex align-items-center justify-content-center'>
                                Sign up
