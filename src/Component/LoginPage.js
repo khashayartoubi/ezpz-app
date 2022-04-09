@@ -85,10 +85,10 @@ export default class LoginPage extends React.Component {
 
     render() {
         return (
-                <div style={{height:'100%',background:'#E5E5E5'}} className='d-flex align-items-center justify-content-center'>
+                <div style={{height:'100%',background:'#E5E5E5'}} className='flex items-center justify-center'>
                     <form autoComplete="off" onInput={this.SignUpDisabled} onSubmit={this.props.formHandler} style={{height:'95%'}}>
-                        <div style={{height:'100%',borderRadius:'5px',boxShadow:'1px 2px 10px rgba(0,0,0,0.1)',width:'350px',background:'#fff',padding:'80px 0 60px 0',margin:'50px auto'}} className='d-flex flex-column justify-content-center align-items-center'>
-                                <div style={{width:'380px',height:'100px'}} className='d-flex justify-content-center align-items-center'>
+                        <div style={{height:'100%',borderRadius:'5px',boxShadow:'1px 2px 10px rgba(0,0,0,0.1)',width:'350px',background:'#fff',padding:'80px 0 60px 0',margin:'50px auto'}} className='flex flex-col justify-center items-center'>
+                                <div style={{width:'380px',height:'100px'}} className='flex justify-center items-center'>
                                     <svg
                                         width={120}
                                         height={290}
@@ -217,10 +217,10 @@ export default class LoginPage extends React.Component {
                                         forget Password
                                     </Link>
                                 </div>
-                                <button type='submit' disabled={this.state.signUpDisabled ? '' : 'disabled'} style={{fontSize:'24px',background:this.state.signUpDisabled ? '#575EFF' : '#E2E3FF',cursor:this.state.signUpDisabled ? 'pointer' : 'not-allowed',transition:'0.2s',borderRadius:'5px',color:'#fff',border:'none',width:'300px',height:'56px',marginTop:'40px',padding:'10px'}} className='d-flex align-items-center justify-content-center'>
+                                <button type='submit' disabled={this.state.signUpDisabled ? '' : 'disabled'} style={{fontSize:'24px',background:this.state.signUpDisabled ? '#575EFF' : '#E2E3FF',cursor:this.state.signUpDisabled ? 'pointer' : 'not-allowed',transition:'0.2s',borderRadius:'5px',color:'#fff',border:'none',width:'300px',height:'56px',marginTop:'40px',padding:'10px'}} className='flex items-center justify-center'>
                                     Sign in
                                 </button>
-                                <div style={{margin:'30px auto'}} className='d-flex'>
+                                <div style={{margin:'30px auto'}} className='flex'>
                                     <span style={{marginRight:'5px'}}>
                                         No account? 
                                     </span>
